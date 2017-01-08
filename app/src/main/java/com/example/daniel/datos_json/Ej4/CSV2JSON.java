@@ -27,7 +27,7 @@ public class CSV2JSON {
 
     public JSONObject convert() throws IOException, JSONException {
         String[] headers = content.substring(0, content.indexOf("\n")).split(delimiter);
-        String data = content.substring(content.indexOf("\n")+2);
+        String data = content.substring(content.indexOf("\n")+1);
 
         JSONObject output = new JSONObject();
         JSONArray array = new JSONArray();
