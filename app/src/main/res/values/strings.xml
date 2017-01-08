@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Datos_JSON</string>
+
+    <string name="csv">stop_id,stop_code,stop_name,stop_lat,stop_lon,stop_url\n
+101,101,Alameda Principal (Sur),36.716872,-4.424393,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=101\n
+103,103,Victoria (Plaza de la Merced),36.723415,-4.416463,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=103\n
+104,104,Compás de la Victoria,36.727403,-4.413547,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=104\n
+105,105,Fernando el Católico,36.729034,-4.413708,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=105</string>
 </resources>
