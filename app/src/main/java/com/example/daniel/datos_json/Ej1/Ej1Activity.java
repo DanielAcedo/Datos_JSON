@@ -7,7 +7,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.daniel.datos_json.Forecast;
-import com.example.daniel.datos_json.MainActivity;
 import com.example.daniel.datos_json.R;
 import com.example.daniel.datos_json.RestClient;
 import com.example.daniel.datos_json.WeatherAPI;
@@ -40,7 +39,7 @@ public class Ej1Activity extends AppCompatActivity {
         String url = WeatherAPI.createCompleteApiCall(
                 WeatherAPI.APIKEY,
                 WeatherAPI.ID_MALAGA,
-                WeatherAPI.UNIT_METRIC
+                WeatherAPI.Metric.UNIT_METRIC
                 );
 
         RestClient.get(url, new JsonHttpResponseHandler(){

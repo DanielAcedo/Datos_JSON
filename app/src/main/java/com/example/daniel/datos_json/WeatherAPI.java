@@ -1,8 +1,12 @@
 package com.example.daniel.datos_json;
 
+import android.support.annotation.StringDef;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.Calendar;
 
 /**
@@ -14,12 +18,18 @@ public class WeatherAPI {
     public static final String CURRENT_WEATHER_PATH = "http://api.openweathermap.org/data/2.5/weather?";
     public static final String ICON_PREFIX_PATH = "http://openweathermap.org/img/w/";
     public static final String ID_MALAGA = "2514256";
-    public static final String UNIT_METRIC = "metric";
 
     public static final String SEPARATOR_PRMT = "&";
     public static final String ID_PREFIX = "id=";
     public static final String APIKEY_PREFIX = "APPID=";
     public static final String UNIT_PREFIX = "units=";
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef()
+    public @interface Metric {
+        String UNIT_METRIC = "metric";
+        String UNIT_IMPERIAL = "imperial";
+    }
 
     /**
      * Create a complete url path for calling Weather API
@@ -28,7 +38,7 @@ public class WeatherAPI {
      * @param units Metric system used
      * @return
      */
-    public static String createCompleteApiCall(String api_key, String city_id, String units){
+    public static String createCompleteApiCall(String api_key, String city_id, @Metric String units){
         return CURRENT_WEATHER_PATH+
                 ID_PREFIX+
                 city_id+

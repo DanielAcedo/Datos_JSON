@@ -39,7 +39,8 @@ public class CSV2JSON {
             JSONObject stop = new JSONObject();
             String[] fields = line.split(delimiter);
 
-            for(int i = 0; i < headers.length; i++){
+            for(int i = 0; i < fields.length; i++){
+
                 stop.put(headers[i], fields[i]);
             }
 
