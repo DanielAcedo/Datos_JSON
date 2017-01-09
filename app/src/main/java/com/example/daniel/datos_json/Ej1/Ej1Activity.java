@@ -37,6 +37,7 @@ public class Ej1Activity extends AppCompatActivity {
 
     private void download(){
         String url = WeatherAPI.createCompleteApiCall(
+                WeatherAPI.RequestType.CURRENT_WEATHER,
                 WeatherAPI.APIKEY,
                 WeatherAPI.ID_MALAGA,
                 WeatherAPI.Metric.UNIT_METRIC

@@ -10,6 +10,7 @@ import java.util.Calendar;
 public class Forecast {
     private SimpleDateFormat sdf;
 
+
     private String cityName;
     private String countryCode;
     private String iconCode;

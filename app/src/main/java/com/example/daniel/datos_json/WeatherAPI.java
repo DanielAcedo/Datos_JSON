@@ -1,13 +1,20 @@
 package com.example.daniel.datos_json;
 
+import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Daniel on 15/12/2016.
@@ -16,6 +23,7 @@ import java.util.Calendar;
 public class WeatherAPI {
     public static final String APIKEY = "9a3532d2ea0c378075f8f0057c72cff3";
     public static final String CURRENT_WEATHER_PATH = "http://api.openweathermap.org/data/2.5/weather?";
+    public static final String LAST_7_DAYS_PATH = "http://api.openweathermap.org/data/2.5/forecast/daily?";
     public static final String ICON_PREFIX_PATH = "http://openweathermap.org/img/w/";
     public static final String ID_MALAGA = "2514256";
 
@@ -31,6 +39,13 @@ public class WeatherAPI {
         String UNIT_IMPERIAL = "imperial";
     }
 
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef()
+    public @interface RequestType{
+        int CURRENT_WEATHER = 0;
+        int LAST_7_DAYS = 1;
+    }
+
     /**
      * Create a complete url path for calling Weather API
      * @param api_key Application Key
@@ -38,16 +53,34 @@ public class WeatherAPI {
      * @param units Metric system used
      * @return
      */
-    public static String createCompleteApiCall(String api_key, String city_id, @Metric String units){
-        return CURRENT_WEATHER_PATH+
-                ID_PREFIX+
-                city_id+
-                SEPARATOR_PRMT+
-                APIKEY_PREFIX+
-                api_key+
-                SEPARATOR_PRMT+
-                UNIT_PREFIX+
-                units;
+    public static String createCompleteApiCall(@RequestType int type, String api_key, String city_id, @Metric String units){
+        String out = "";
+
+        switch (type){
+            case RequestType.CURRENT_WEATHER:
+                out = CURRENT_WEATHER_PATH+
+                        ID_PREFIX+
+                        city_id+
+                        SEPARATOR_PRMT+
+                        APIKEY_PREFIX+
+                        api_key+
+                        SEPARATOR_PRMT+
+                        UNIT_PREFIX+
+                        units;
+                break;
+            case RequestType.LAST_7_DAYS:
+                out = LAST_7_DAYS_PATH+
+                        ID_PREFIX+
+                        city_id+
+                        SEPARATOR_PRMT+
+                        APIKEY_PREFIX+
+                        api_key+
+                        SEPARATOR_PRMT+
+                        UNIT_PREFIX+
+                        units;
+        }
+
+        return out;
     }
 
     public static Forecast parseJSONForecast(JSONObject json) throws JSONException {
@@ -94,5 +127,15 @@ public class WeatherAPI {
 
 
         return forecast;
+    }
+
+    public static SimpleForecast[] parseJSONSimpleForecast(JSONObject json) throws JSONException{
+        JSONArray forecastsJSONArray = json.getJSONArray("list");
+        Calendar calTmp = Calendar.getInstance();
+
+        Gson gson = new GsonBuilder().create();
+        SimpleForecast[] forecasts = gson.fromJson(forecastsJSONArray.toString(), SimpleForecast[].class);
+
+        return forecasts;
     }
 }
