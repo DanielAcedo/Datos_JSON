@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.daniel.datos_json.Ej1.CityInfo;
 import com.example.daniel.datos_json.Ej1.Ej1Activity;
 import com.example.daniel.datos_json.Ej2.Ej2Activity;
 import com.example.daniel.datos_json.Ej3.Ej3Activity;

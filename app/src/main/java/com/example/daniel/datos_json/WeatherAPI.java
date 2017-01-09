@@ -5,7 +5,6 @@ import android.support.annotation.StringDef;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +13,6 @@ import org.json.JSONObject;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Created by Daniel on 15/12/2016.
@@ -25,6 +23,8 @@ public class WeatherAPI {
     public static final String CURRENT_WEATHER_PATH = "http://api.openweathermap.org/data/2.5/weather?";
     public static final String LAST_7_DAYS_PATH = "http://api.openweathermap.org/data/2.5/forecast/daily?";
     public static final String ICON_PREFIX_PATH = "http://openweathermap.org/img/w/";
+
+    //Cities ID
     public static final String ID_MALAGA = "2514256";
 
     public static final String SEPARATOR_PRMT = "&";
@@ -107,9 +107,7 @@ public class WeatherAPI {
         //Min temp
         forecast.setMinTemp((float)json.getJSONObject("main").getDouble("temp_min"));
         //Ground-level pressure
-        forecast.setPressureGround((float)json.getJSONObject("main").getDouble("grnd_level"));
-        //Sea-level pressure
-        forecast.setPressureSea((float)json.getJSONObject("main").getDouble("sea_level"));
+        forecast.setPressure((float)json.getJSONObject("main").getDouble("pressure"));
         //Sky main
         forecast.setSkyMain(json.getJSONArray("weather").getJSONObject(0).getString("main"));
         //Sky description

@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">Datos_JSON</string>
+    <string name="nada"></string>
 
-    <string name="csv">stop_id,stop_code,stop_name,stop_lat,stop_lon,stop_url\n
-101,101,Alameda Principal (Sur),36.716872,-4.424393,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=101\n
-103,103,Victoria (Plaza de la Merced),36.723415,-4.416463,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=103\n
-104,104,Compás de la Victoria,36.727403,-4.413547,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=104\n
-105,105,Fernando el Católico,36.729034,-4.413708,http://www.emtmalaga.es/emt-mobile/informacionParada.html?codParada=105</string>
+    <string name="ej1_title">ConversiónMoneda</string>
+    <string name="txv_Euros_text">Euros</string>
+    <string name="txv_Dolares_text">Dólares</string>
+    <string name="btn_ActualizarRatio_text">Actualizar divisas</string>
+    <string name="txv_InfoDivisa_text_correcto">El ratio de divisa actual es: \n</string>
+    <string name="btn_InfoDivisa_text_conectando">Conectando al servidor... </string>
+    <string name="txv_InfoDivisa_text_error">Error al conectar al servidor</string>
+    <string name="rbt_DolaresAEuros_text">Dólares a Euros</string>
+    <string name="rbt_EurosADolares_text">Euros a Dólares</string>
+    <string name="btn_Convertir_text">Convertir</string>
+    <string name="parseEurosError">Error al leer los euros introducidos, asegurate de que sea un número</string>
+    <string name="parseDolaresError">Error al leer los dólares introducidos, asegurate de que sea un número</string>
 </resources>

@@ -19,8 +19,7 @@ public class Forecast {
     private Calendar sunrise;
     private Calendar sunset;
     private Calendar date;
-    private float pressureGround;
-    private float pressureSea;
+    private float pressure;
     private float temperature;
     private float maxTemp;
     private float minTemp;
@@ -34,7 +33,7 @@ public class Forecast {
 
     public Forecast(String cityName, String countryCode, String iconCode, String skyMain,
                     String skyDescription, Calendar sunrise, Calendar sunset, Calendar date,
-                    float pressureGround, float pressureSea, float temperature, float maxTemp,
+                    float pressureGround, float temperature, float maxTemp,
                     float minTemp, float windSpeed, byte humidity, byte cloudiness) {
 
         super();
@@ -46,8 +45,7 @@ public class Forecast {
         this.sunrise = sunrise;
         this.sunset = sunset;
         this.date = date;
-        this.pressureGround = pressureGround;
-        this.pressureSea = pressureSea;
+        this.pressure = pressureGround;
         this.temperature = temperature;
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
@@ -120,20 +118,12 @@ public class Forecast {
         this.date = date;
     }
 
-    public float getPressureGround() {
-        return pressureGround;
+    public float getPressure() {
+        return pressure;
     }
 
-    public void setPressureGround(float pressureGround) {
-        this.pressureGround = pressureGround;
-    }
-
-    public float getPressureSea() {
-        return pressureSea;
-    }
-
-    public void setPressureSea(float pressureSea) {
-        this.pressureSea = pressureSea;
+    public void setPressure(float pressure) {
+        this.pressure = pressure;
     }
 
     public float getTemperature() {
@@ -189,7 +179,7 @@ public class Forecast {
         return  String.format(
                     "Name: %1$s\nCountry: %2$s\nTemp: %3$s Cº \nSky: %4$s\nDescription: %5$s\n" +
                             "Humidity: %6$s%%\nGround pressure: %7$s hpa\n"
-                ,   cityName, countryCode, temperature, skyMain, skyDescription, humidity, pressureGround)+
+                ,   cityName, countryCode, temperature, skyMain, skyDescription, humidity, pressure)+
                 "Sunset: "+sdf.format(sunset.getTime())+"\n"+
                 "Sunrise: "+sdf.format(sunrise.getTime())+"\n"+
                 "Date: "+sdf.format(date.getTime());
