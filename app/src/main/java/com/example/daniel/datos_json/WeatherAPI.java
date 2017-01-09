@@ -29,6 +29,7 @@ public class WeatherAPI {
 
     public static final String SEPARATOR_PRMT = "&";
     public static final String ID_PREFIX = "id=";
+    public static final String QUERY_PREFIX="q=";
     public static final String APIKEY_PREFIX = "APPID=";
     public static final String UNIT_PREFIX = "units=";
 
@@ -82,6 +83,42 @@ public class WeatherAPI {
 
         return out;
     }
+
+    public static String createCompleteApiCall(@RequestType int type, String api_key, String cityName, String countryCode, @Metric String units){
+        String out = "";
+
+        switch (type){
+            case RequestType.CURRENT_WEATHER:
+                out = CURRENT_WEATHER_PATH+
+                        QUERY_PREFIX+
+                        cityName+
+                        ","+
+                        countryCode+
+                        SEPARATOR_PRMT+
+                        APIKEY_PREFIX+
+                        api_key+
+                        SEPARATOR_PRMT+
+                        UNIT_PREFIX+
+                        units;
+                break;
+            case RequestType.LAST_7_DAYS:
+                out = LAST_7_DAYS_PATH+
+                        QUERY_PREFIX+
+                        cityName+
+                        ","+
+                        countryCode+
+                        SEPARATOR_PRMT+
+                        APIKEY_PREFIX+
+                        api_key+
+                        SEPARATOR_PRMT+
+                        UNIT_PREFIX+
+                        units;
+        }
+
+        return out;
+    }
+
+
 
     public static Forecast parseJSONForecast(JSONObject json) throws JSONException {
         Forecast forecast = new Forecast();
