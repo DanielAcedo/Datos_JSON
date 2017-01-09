@@ -31,7 +31,7 @@ public class SimpleForecast {
         this.epochDate = epochDate;
     }
 
-    public String getFormatedDate(){
+    public String getFormattedDate(){
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(epochDate * 1000L);
 
@@ -57,6 +57,6 @@ public class SimpleForecast {
     }
 
     public String toString(){
-        return "Date: "+getFormatedDate()+", MinTemp: "+temp.getMinTemp()+", MaxTemp: "+temp.getMaxTemp()+", Pressure: "+pressure;
+        return "Date: "+ getFormattedDate()+", MinTemp: "+temp.getMinTemp()+", MaxTemp: "+temp.getMaxTemp()+", Pressure: "+pressure;
     }
 }
